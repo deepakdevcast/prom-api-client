@@ -18,7 +18,7 @@ class PrometheusRules {
             params: {}
         });
         const res = await fetch(reqUrl, {
-            method: this.prometheusEndpoint.rules.method,
+            method: rawEndpoint.method,
         });
         if (res.status == 200) {
             return await res.text();
@@ -38,7 +38,7 @@ class PrometheusRules {
         const alertYaml = new YAML.Document();
         alertYaml.contents = alertGroup;
         const res = await fetch(reqUrl, {
-            method: 'post',
+            method: rawEndpoint.method,
             headers: { 'Content-Type': 'application/yaml' },
             body: alertYaml.toString(),
         });
