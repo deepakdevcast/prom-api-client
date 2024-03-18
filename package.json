@@ -1,0 +1,28 @@
+{
+  "name": "prom-api",
+  "version": "1.0.0",
+  "description": "A client to support Prometheus HTTP API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deepakdevcast/prom-api"
+  },
+  "keywords": [
+    "prometheus",
+    "observability"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.28",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "yaml": "^2.4.1"
+  }
+}
