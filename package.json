@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deepakdevcast/prom-api-client"
+    "url": "git+https://github.com/deepakdevcast/prom-api-client.git"
   },
   "keywords": [
     "prometheus",
