@@ -1,11 +1,11 @@
 # Prom-API-Client
-A user-friendly package to uses Prometheus HTTP-API in easier way.
+A user-friendly package to use Prometheus HTTP-API in more easier way.
 
 # Rules
 ```
 import { PrometheusRules } from 'prom-api-client';
 const prometheusAlertInstance = new PrometheusRules('http://localhost:9090');
-const alertRules = await prometheusAlertInstance.getAlertRules({ruleName: 'test'});
+const alertRules = await prometheusAlertInstance.getAlertRules({rule_name: 'test'});
 
 ```
 
