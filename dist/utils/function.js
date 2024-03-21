@@ -1,4 +1,4 @@
-const generateRequestUrl = (requestUrl) => {
+export const generateRequestUrl = (requestUrl) => {
     let url = new URL(requestUrl.baseUrl);
     url.href += requestUrl.path;
     Object.keys(requestUrl.params).forEach((key) => url.href += `/${requestUrl.params[key]}`);
@@ -8,4 +8,10 @@ const generateRequestUrl = (requestUrl) => {
     });
     return url.toString().replace(/(?<!:)\/+/g, '/');
 };
-export default generateRequestUrl;
+export const encodeObject = (object) => {
+    const formData = [];
+    Object.entries(object).forEach(([key, value]) => {
+        formData.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+    });
+    return formData.join('&');
+};

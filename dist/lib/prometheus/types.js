@@ -1,19 +1,15 @@
 export const PrometheusQueryEndpoint = {
     queryInstant: {
-        method: 'get',
+        method: 'post',
         path: '/api/v1/query',
-        queryParams: {
-            query: '',
-            time: '',
-            timeout: '',
-        }
+        queryParams: {},
     },
     queryRange: {
-        method: 'get',
+        method: 'post',
         path: '/api/v1/query_range',
     },
     queryExemplars: {
-        method: 'get',
+        method: 'post',
         path: '/api/v1/query_exemplars'
     },
     series: {

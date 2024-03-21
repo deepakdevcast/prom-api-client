@@ -3,7 +3,7 @@ declare class PrometheusRules {
     private baseUrl;
     private prometheusEndpoint;
     constructor(baseUrl: string);
-    getAlertRules(query?: RuleQuery): Promise<string | Response>;
-    setAlertRuleGroup(namespace: string, alertGroup: AlertGroup): Promise<string | Response>;
+    getAlertRules(query?: RuleQuery): Promise<any>;
+    setAlertRuleGroup(namespace: string, alertGroup: AlertGroup): Promise<any>;
 }
 export default PrometheusRules;

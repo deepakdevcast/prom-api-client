@@ -1,3 +1,4 @@
+import { PrometheusApiGeneralResponse } from "../types.js";
 import { QueryExemplars, QueryInstant, QueryRange } from "./types.js";
 declare class PrometheusQuery {
     private baseUrl;
@@ -5,15 +6,15 @@ declare class PrometheusQuery {
     constructor(baseUrl: string);
     getQueryInstant(query: QueryInstant): Promise<{
         status: number;
-        data: any;
+        data: PrometheusApiGeneralResponse;
     }>;
     getQueryRange(query: QueryRange): Promise<{
         status: number;
-        data: any;
+        data: PrometheusApiGeneralResponse;
     }>;
     getQueryExemplars(query: QueryExemplars): Promise<{
         status: number;
-        data: any;
+        data: PrometheusApiGeneralResponse;
     }>;
 }
 export default PrometheusQuery;

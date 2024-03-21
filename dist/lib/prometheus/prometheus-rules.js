@@ -1,6 +1,6 @@
 import * as YAML from "yaml";
 import { PrometheusEndpoint } from "./types.js";
-import generateRequestUrl from "../../utils/function.js";
+import { generateRequestUrl } from "../../utils/function.js";
 class PrometheusRules {
     baseUrl;
     prometheusEndpoint = PrometheusEndpoint;
@@ -21,7 +21,7 @@ class PrometheusRules {
             method: rawEndpoint.method,
         });
         if (res.status == 200) {
-            return await res.text();
+            return await res.json();
         }
         else {
             return res;
@@ -43,7 +43,7 @@ class PrometheusRules {
             body: alertYaml.toString(),
         });
         if (res.status == 202) {
-            return await res.text();
+            return await res.json();
         }
         else {
             return res;

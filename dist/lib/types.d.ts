@@ -1,4 +1,14 @@
-type TenantHeader = {
+export type TenantHeader = {
     'X-Scope-OrgID': string;
 };
-export default TenantHeader;
+export type PrometheusApiSuccessGeneralResponse = {
+    status: 'success';
+    data: any;
+    warning?: Array<String>;
+};
+export type PrometheusApiErrorGeneralResponse = {
+    status: 'error';
+    errorType: string;
+    error: string;
+};
+export type PrometheusApiGeneralResponse = PrometheusApiSuccessGeneralResponse | PrometheusApiErrorGeneralResponse;
