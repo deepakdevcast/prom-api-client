@@ -1,6 +1,6 @@
-import * as YAML from "yaml";
-import { PrometheusEndpoint } from "./types.js";
-import { generateRequestUrl } from "../../utils/function.js";
+import * as YAML from 'yaml';
+import { PrometheusEndpoint } from './types.js';
+import { generateRequestUrl } from '../../utils/function.js';
 class PrometheusRules {
     baseUrl;
     prometheusEndpoint = PrometheusEndpoint;

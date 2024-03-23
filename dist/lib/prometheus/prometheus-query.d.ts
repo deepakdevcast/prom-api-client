@@ -1,5 +1,5 @@
-import { PrometheusApiGeneralResponse } from "../types.js";
-import { QueryExemplars, QueryInstant, QueryRange } from "./types.js";
+import { PrometheusApiGeneralResponse } from '../types.js';
+import { QueryExemplars, QueryInstant, QueryRange } from './types.js';
 declare class PrometheusQuery {
     private baseUrl;
     private prometheusQueryEndpoint;

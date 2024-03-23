@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "start": "node ./dist/index.js",
+    "lint": "npx eslint . --ext .ts",
+    "start": "npm run lint && node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,11 +16,15 @@
   },
   "keywords": [
     "prometheus",
+    "metrics",
     "observability"
   ],
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.11.28",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "eslint": "^8.57.0",
     "typescript": "^5.4.2"
   },
   "dependencies": {

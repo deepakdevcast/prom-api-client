@@ -4,7 +4,7 @@ export type TenantHeader = {
 export type PrometheusApiSuccessGeneralResponse = {
     status: 'success';
     data: any;
-    warning?: Array<String>;
+    warning?: Array<string>;
 };
 export type PrometheusApiErrorGeneralResponse = {
     status: 'error';

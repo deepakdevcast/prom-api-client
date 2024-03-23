@@ -1,4 +1,4 @@
-import { AlertGroup, RuleQuery } from "./types.js";
+import { AlertGroup, RuleQuery } from './types.js';
 declare class PrometheusRules {
     private baseUrl;
     private prometheusEndpoint;
