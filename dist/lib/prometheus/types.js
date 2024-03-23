@@ -13,20 +13,16 @@ export const PrometheusQueryEndpoint = {
         path: '/api/v1/query_exemplars'
     },
     series: {
-        method: 'get',
+        method: 'post',
         path: '/api/v1/series'
     },
     labelNames: {
-        method: 'get',
+        method: 'post',
         path: '/api/v1/labels'
     },
     labelValues: {
         method: 'get',
         path: '/api/v1/label',
-        params: {
-            name: '',
-            values: 'values',
-        }
     },
 };
 export const PrometheusEndpoint = {

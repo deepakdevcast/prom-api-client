@@ -1,3 +1,4 @@
+import { SelectorTypeParams } from './types.js';
 export const generateRequestUrl = (requestUrl) => {
     const url = new URL(requestUrl.baseUrl);
     url.href += requestUrl.path;
@@ -8,10 +9,19 @@ export const generateRequestUrl = (requestUrl) => {
     });
     return url.toString().replace(/(?<!:)\/+/g, '/');
 };
+export const checkSeriesSelector = (key) => {
+    return SelectorTypeParams.includes(key);
+};
 export const encodeObject = (object) => {
     const formData = [];
     Object.entries(object).forEach(([key, value]) => {
-        formData.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+        if (checkSeriesSelector(key) && value instanceof Array) {
+            value.forEach((v) => formData.push(encodeURIComponent(`${key}[]`) + '=' + encodeURIComponent(v)));
+        }
+        else {
+            formData.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+        }
     });
-    return formData.join('&');
+    const finalEncodeString = formData.join('&');
+    return finalEncodeString;
 };

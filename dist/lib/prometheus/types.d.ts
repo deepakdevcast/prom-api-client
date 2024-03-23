@@ -21,6 +21,24 @@ export type QueryExemplars = {
     start: string;
     end: string;
 };
+export type GetLabels = {
+    start?: string;
+    end?: string;
+    match?: Array<string>;
+    limit?: number;
+};
+export type GetSeries = {
+    match: Array<string>;
+    start: string;
+    end: string;
+    limit?: number;
+};
+export type GetLabelValues = {
+    start?: string;
+    end?: string;
+    match?: Array<string>;
+    limit?: number;
+};
 export type AlertGroup = {
     name: string;
     interval?: string;

@@ -1,4 +1,4 @@
-type RequestUrl = {
+export type RequestUrl = {
     baseUrl: string;
     path: string;
     params: {
@@ -8,4 +8,4 @@ type RequestUrl = {
         [key: string]: string;
     };
 };
-export default RequestUrl;
+export declare const SelectorTypeParams: string[];

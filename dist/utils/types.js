@@ -1,1 +1,1 @@
-export {};
+export const SelectorTypeParams = ['match'];
