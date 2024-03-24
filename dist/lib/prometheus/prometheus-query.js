@@ -7,7 +7,7 @@ class PrometheusQuery {
         this.baseUrl = baseUrl;
     }
     async getQueryInstant(query) {
-        const formData = encodeObject(query);
+        const formData = encodeObject(query || {});
         const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.queryInstant.path, {
             method: this.prometheusQueryEndpoint.queryInstant.method,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -16,7 +16,7 @@ class PrometheusQuery {
         return { status: res.status, data: await res.json() };
     }
     async getQueryRange(query) {
-        const formData = encodeObject(query);
+        const formData = encodeObject(query || {});
         const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.queryRange.path, {
             method: this.prometheusQueryEndpoint.queryRange.method,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -25,7 +25,7 @@ class PrometheusQuery {
         return { status: res.status, data: await res.json() };
     }
     async getQueryExemplars(query) {
-        const formData = encodeObject(query);
+        const formData = encodeObject(query || {});
         const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.queryExemplars.path, {
             method: this.prometheusQueryEndpoint.queryExemplars.method,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -43,7 +43,7 @@ class PrometheusQuery {
         return { status: res.status, data: await res.json() };
     }
     async getSeries(params) {
-        const formData = encodeObject(params);
+        const formData = encodeObject(params || {});
         const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.series.path, {
             method: this.prometheusQueryEndpoint.series.method,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
