@@ -1,5 +1,5 @@
 import { PrometheusApiGeneralResponse } from '../types.js';
-import { GetLabelValues, GetLabels, GetSeries, QueryExemplars, QueryInstant, QueryRange } from './types.js';
+import { FormatQuery, GetLabelValues, GetLabels, GetSeries, QueryExemplars, QueryInstant, QueryRange } from './types.js';
 declare class PrometheusQuery {
     private baseUrl;
     private prometheusQueryEndpoint;
@@ -9,6 +9,10 @@ declare class PrometheusQuery {
         data: PrometheusApiGeneralResponse;
     }>;
     getQueryRange(query: QueryRange): Promise<{
+        status: number;
+        data: PrometheusApiGeneralResponse;
+    }>;
+    getFormatQuery(query: FormatQuery): Promise<{
         status: number;
         data: PrometheusApiGeneralResponse;
     }>;

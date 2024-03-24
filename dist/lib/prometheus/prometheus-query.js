@@ -24,6 +24,15 @@ class PrometheusQuery {
         });
         return { status: res.status, data: await res.json() };
     }
+    async getFormatQuery(query) {
+        const formData = encodeObject(query || {});
+        const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.formatQuery.path, {
+            method: this.prometheusQueryEndpoint.formatQuery.method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formData,
+        });
+        return { status: res.status, data: await res.json() };
+    }
     async getQueryExemplars(query) {
         const formData = encodeObject(query || {});
         const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.queryExemplars.path, {

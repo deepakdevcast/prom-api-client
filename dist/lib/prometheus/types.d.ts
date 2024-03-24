@@ -16,6 +16,9 @@ export type QueryRange = {
     step: string;
     timeout?: string;
 };
+export type FormatQuery = {
+    query: string;
+};
 export type QueryExemplars = {
     query: string;
     start: string;
@@ -38,6 +41,20 @@ export type GetLabelValues = {
     end?: string;
     match?: Array<string>;
     limit?: number;
+};
+export type GetTargetDiscovery = {
+    state?: string;
+    scrapePool?: string;
+};
+export type GetTargetMetadata = {
+    match_target?: string;
+    metric?: string;
+    limit?: number;
+};
+export type GetMetadata = {
+    limit_per_metric?: number;
+    limit?: number;
+    metric?: string;
 };
 export type AlertGroup = {
     name: string;
@@ -71,4 +88,5 @@ export type PrometheusEndpointTemplates = {
     [key: string]: EndpointConfig;
 };
 export declare const PrometheusQueryEndpoint: PrometheusEndpointTemplates;
+export declare const PrometheusMetadataEndpoint: PrometheusEndpointTemplates;
 export declare const PrometheusEndpoint: PrometheusEndpointTemplates;

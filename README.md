@@ -77,3 +77,40 @@ const dataLabelValues = await prometheusQueryInstance.getLabelValuesByLabelName(
   match: ['up{job="prometheus"}']
 });
 ```
+
+## Get all active alerts
+```
+const activeAlertData = await prometheusAlertInstance.getActiveAlerts();
+```
+
+# Metadata and Targets
+
+## Get all target discovery
+```
+const prometheusMetadataInstance = new PrometheusMetadata('http://localhost:9090');
+const allTargetDiscovery = await prometheusMetadataInstance.getTargetDiscovery();
+```
+
+## Get target discovery with state and scrapePool
+```
+const targetDiscovery = await prometheusMetadataInstance.getTargetDiscovery({
+  state: 'dropped',
+  scrapePool: 'prometheus'
+});
+```
+
+## Get target Metadata
+```
+const targetMeta = await prometheusMetadataInstance.getTargetMetadata({
+  match_target: '{job="prometheus"}',
+  metric: 'go_goroutines',
+  limit: 2,
+});
+```
+
+## get metadata
+```
+const metaData = await prometheusMetadataInstance.getMetadata({
+  metric: 'http_requests_total'
+});
+```

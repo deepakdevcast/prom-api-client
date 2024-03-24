@@ -27,6 +27,23 @@ class PrometheusRules {
             return res;
         }
     }
+    async getActiveAlerts() {
+        const reqUrl = generateRequestUrl({
+            baseUrl: this.baseUrl,
+            path: this.prometheusEndpoint.activeAlerts.path,
+            queryParams: {},
+            params: {}
+        });
+        const res = await fetch(reqUrl, {
+            method: this.prometheusEndpoint.activeAlerts.method,
+        });
+        if (res.status == 200) {
+            return await res.json();
+        }
+        else {
+            return res;
+        }
+    }
     async setAlertRuleGroup(namespace, alertGroup) {
         const rawEndpoint = this.prometheusEndpoint.setRuleGroupByNamespace;
         const reqUrl = generateRequestUrl({

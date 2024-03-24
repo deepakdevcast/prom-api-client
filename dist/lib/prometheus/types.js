@@ -8,9 +8,9 @@ export const PrometheusQueryEndpoint = {
         method: 'post',
         path: '/api/v1/query_range',
     },
-    queryExemplars: {
+    formatQuery: {
         method: 'post',
-        path: '/api/v1/query_exemplars'
+        path: '/api/v1/format_query'
     },
     series: {
         method: 'post',
@@ -24,6 +24,28 @@ export const PrometheusQueryEndpoint = {
         method: 'get',
         path: '/api/v1/label',
     },
+    queryExemplars: {
+        method: 'post',
+        path: '/api/v1/query_exemplars'
+    },
+};
+export const PrometheusMetadataEndpoint = {
+    targetDiscovery: {
+        method: 'get',
+        path: '/api/v1/targets',
+        params: {
+            state: '',
+            scapePool: ''
+        }
+    },
+    targetMetadata: {
+        method: 'get',
+        path: '/api/v1/targets/metadata',
+    },
+    metadata: {
+        method: 'get',
+        path: '/api/v1/metadata',
+    }
 };
 export const PrometheusEndpoint = {
     rules: {
@@ -31,7 +53,7 @@ export const PrometheusEndpoint = {
         path: '/api/v1/rules',
         queryParams: {},
     },
-    alerts: {
+    activeAlerts: {
         method: 'get',
         path: '/api/v1/alerts',
     },
