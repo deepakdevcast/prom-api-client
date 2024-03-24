@@ -3,6 +3,11 @@ A user-friendly package to use Prometheus HTTP-API in more easier way.
 
 # Rules
 
+## Get all active alerts
+```
+const activeAlertData = await prometheusAlertInstance.getActiveAlerts();
+```
+
 ## Get Alert Rules
 ```
 import { PrometheusRules } from 'prom-api-client';
@@ -76,11 +81,6 @@ const dataSeries = await prometheusQueryInstance.getSeries({
 const dataLabelValues = await prometheusQueryInstance.getLabelValuesByLabelName('job', {
   match: ['up{job="prometheus"}']
 });
-```
-
-## Get all active alerts
-```
-const activeAlertData = await prometheusAlertInstance.getActiveAlerts();
 ```
 
 # Metadata and Targets
