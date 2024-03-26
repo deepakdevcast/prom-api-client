@@ -1,61 +1,60 @@
 import { encodeObject } from '../../utils/function.js';
+import PrometheusServices from './prometheus-services.js';
 import { PrometheusQueryEndpoint } from './types.js';
-class PrometheusQuery {
-    baseUrl;
-    prometheusQueryEndpoint = PrometheusQueryEndpoint;
-    constructor(baseUrl) {
-        this.baseUrl = baseUrl;
+class PrometheusQuery extends PrometheusServices {
+    constructor(baseUrl, headers) {
+        super(baseUrl, PrometheusQueryEndpoint, headers);
     }
     async getQueryInstant(query) {
         const formData = encodeObject(query || {});
-        const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.queryInstant.path, {
-            method: this.prometheusQueryEndpoint.queryInstant.method,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        const res = await fetch(this.baseUrl + this.serviceEndpoints.queryInstant.path, {
+            method: this.serviceEndpoints.queryInstant.method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...this.headers },
             body: formData,
         });
         return { status: res.status, data: await res.json() };
     }
     async getQueryRange(query) {
         const formData = encodeObject(query || {});
-        const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.queryRange.path, {
-            method: this.prometheusQueryEndpoint.queryRange.method,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        const res = await fetch(this.baseUrl + this.serviceEndpoints.queryRange.path, {
+            method: this.serviceEndpoints.queryRange.method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...this.headers },
             body: formData,
         });
         return { status: res.status, data: await res.json() };
     }
     async getFormatQuery(query) {
         const formData = encodeObject(query || {});
-        const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.formatQuery.path, {
-            method: this.prometheusQueryEndpoint.formatQuery.method,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        const res = await fetch(this.baseUrl + this.serviceEndpoints.formatQuery.path, {
+            method: this.serviceEndpoints.formatQuery.method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...this.headers },
             body: formData,
         });
         return { status: res.status, data: await res.json() };
     }
     async getQueryExemplars(query) {
         const formData = encodeObject(query || {});
-        const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.queryExemplars.path, {
-            method: this.prometheusQueryEndpoint.queryExemplars.method,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        const res = await fetch(this.baseUrl + this.serviceEndpoints.queryExemplars.path, {
+            method: this.serviceEndpoints.queryExemplars.method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...this.headers },
             body: formData,
         });
         return { status: res.status, data: await res.json() };
     }
     async getLabelNames(params) {
         const formData = encodeObject(params || {});
-        const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.labelNames.path, {
-            method: this.prometheusQueryEndpoint.labelNames.method,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        const res = await fetch(this.baseUrl + this.serviceEndpoints.labelNames.path, {
+            method: this.serviceEndpoints.labelNames.method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...this.headers },
             body: formData,
         });
         return { status: res.status, data: await res.json() };
     }
     async getSeries(params) {
         const formData = encodeObject(params || {});
-        const res = await fetch(this.baseUrl + this.prometheusQueryEndpoint.series.path, {
-            method: this.prometheusQueryEndpoint.series.method,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        const res = await fetch(this.baseUrl + this.serviceEndpoints.series.path, {
+            method: this.serviceEndpoints.series.method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...this.headers },
             body: formData,
         });
         return { status: res.status, data: await res.json() };
@@ -64,9 +63,9 @@ class PrometheusQuery {
         if (!label)
             return { status: 400, data: { status: 'error', errorType: 'bad_data', error: 'no label name parameter provided' } };
         const formData = encodeObject(params || {});
-        const res = await fetch(`${this.baseUrl}${this.prometheusQueryEndpoint.labelValues.path}/${label}/values?${formData}`, {
-            method: this.prometheusQueryEndpoint.labelValues.method,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        const res = await fetch(`${this.baseUrl}${this.serviceEndpoints.labelValues.path}/${label}/values?${formData}`, {
+            method: this.serviceEndpoints.labelValues.method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...this.headers },
         });
         return { status: res.status, data: await res.json() };
     }

@@ -1,20 +1,46 @@
 # Prom-API-Client
 A user-friendly package to use Prometheus HTTP-API in more easier way.
 
+# Importing Class and Define Instance
+```
+import { PrometheusQuery, PrometheusRules, PrometheusMetadata } from 'prom-api-client';
+
+// Prometheus Query --> 
+const prometheusQueryInstance = new PrometheusQuery('http://localhost:9090');
+// Prometheus Alert
+const prometheusAlertInstance = new PrometheusRules('http://localhost:9090');
+// Prometheus Metadata
+const prometheusMetadataInstance = new PrometheusMetadata('http://localhost:9090');
+
+```
+
+### Header feature support
+This will helps to add additional headers (enables to pass the tenant Id)
+```
+// Passed the headers on instance definition
+const headers = {
+  // used in MIMIR to support multi-tenant
+  'X-Scope-OrgID': "dd51439f-64f6-42d3-92c1-634faf6af418",
+}
+const prometheusAlertInstance = new PrometheusRules('http://localhost:9090', headers);
+// OR used it as a chain
+const prometheusAlertInstance = new PrometheusRules('http://localhost:9090');
+const activeAlertData = await prometheusAlertInstance.setHeaders(headers).getActiveAlerts();
+```
+
 # Rules
+
+## Get Alert Rules
+```
+import { PrometheusRules } from 'prom-api-client';
+const alertRules = await prometheusAlertInstance.getAlertRules({rule_name: 'test'});
+```
 
 ## Get all active alerts
 ```
 const activeAlertData = await prometheusAlertInstance.getActiveAlerts();
 ```
 
-## Get Alert Rules
-```
-import { PrometheusRules } from 'prom-api-client';
-const prometheusAlertInstance = new PrometheusRules('http://localhost:9090');
-const alertRules = await prometheusAlertInstance.getAlertRules({rule_name: 'test'});
-
-```
 ## Set Alert Rules By Alert Group
 ```
 const alertGroup = {
@@ -34,7 +60,6 @@ console.log(JSON.stringify(res));
 ## Query Instant
 ```
 import { PrometheusQuery } from 'prom-api-client';
-const prometheusQueryInstance = new PrometheusQuery('http://localhost:9090');
 const queryResult = await prometheusQueryInstance.getQueryInstant({
   query: 'up'
 });
@@ -87,7 +112,6 @@ const dataLabelValues = await prometheusQueryInstance.getLabelValuesByLabelName(
 
 ## Get all target discovery
 ```
-const prometheusMetadataInstance = new PrometheusMetadata('http://localhost:9090');
 const allTargetDiscovery = await prometheusMetadataInstance.getTargetDiscovery();
 ```
 

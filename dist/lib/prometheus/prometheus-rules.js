@@ -1,14 +1,13 @@
 import * as YAML from 'yaml';
 import { PrometheusEndpoint } from './types.js';
 import { generateRequestUrl } from '../../utils/function.js';
-class PrometheusRules {
-    baseUrl;
-    prometheusEndpoint = PrometheusEndpoint;
-    constructor(baseUrl) {
-        this.baseUrl = baseUrl;
+import PrometheusServices from './prometheus-services.js';
+class PrometheusRules extends PrometheusServices {
+    constructor(baseUrl, headers) {
+        super(baseUrl, PrometheusEndpoint, headers);
     }
     async getAlertRules(query) {
-        const rawEndpoint = this.prometheusEndpoint.rules;
+        const rawEndpoint = this.serviceEndpoints.rules;
         if (query)
             rawEndpoint.queryParams = query;
         const reqUrl = generateRequestUrl({
@@ -19,6 +18,7 @@ class PrometheusRules {
         });
         const res = await fetch(reqUrl, {
             method: rawEndpoint.method,
+            headers: { ...this.headers }
         });
         if (res.status == 200) {
             return await res.json();
@@ -30,12 +30,13 @@ class PrometheusRules {
     async getActiveAlerts() {
         const reqUrl = generateRequestUrl({
             baseUrl: this.baseUrl,
-            path: this.prometheusEndpoint.activeAlerts.path,
+            path: this.serviceEndpoints.activeAlerts.path,
             queryParams: {},
             params: {}
         });
         const res = await fetch(reqUrl, {
-            method: this.prometheusEndpoint.activeAlerts.method,
+            method: this.serviceEndpoints.activeAlerts.method,
+            headers: { ...this.headers }
         });
         if (res.status == 200) {
             return await res.json();
@@ -45,7 +46,7 @@ class PrometheusRules {
         }
     }
     async setAlertRuleGroup(namespace, alertGroup) {
-        const rawEndpoint = this.prometheusEndpoint.setRuleGroupByNamespace;
+        const rawEndpoint = this.serviceEndpoints.setRuleGroupByNamespace;
         const reqUrl = generateRequestUrl({
             baseUrl: this.baseUrl,
             path: rawEndpoint.path,
@@ -56,7 +57,7 @@ class PrometheusRules {
         alertYaml.contents = alertGroup;
         const res = await fetch(reqUrl, {
             method: rawEndpoint.method,
-            headers: { 'Content-Type': 'application/yaml' },
+            headers: { 'Content-Type': 'application/yaml', ...this.headers },
             body: alertYaml.toString(),
         });
         if (res.status == 202) {
