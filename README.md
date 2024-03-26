@@ -1,7 +1,7 @@
 # Prom-API-Client
 A user-friendly package to use Prometheus HTTP-API in more easier way.
 
-# Importing Class and Define Instance
+# Import Class and Instance
 ```
 import { PrometheusQuery, PrometheusRules, PrometheusMetadata } from 'prom-api-client';
 
@@ -32,7 +32,6 @@ const activeAlertData = await prometheusAlertInstance.setHeaders(headers).getAct
 
 ## Get Alert Rules
 ```
-import { PrometheusRules } from 'prom-api-client';
 const alertRules = await prometheusAlertInstance.getAlertRules({rule_name: 'test'});
 ```
 
@@ -59,7 +58,6 @@ console.log(JSON.stringify(res));
 
 ## Query Instant
 ```
-import { PrometheusQuery } from 'prom-api-client';
 const queryResult = await prometheusQueryInstance.getQueryInstant({
   query: 'up'
 });
