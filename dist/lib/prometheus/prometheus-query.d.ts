@@ -1,9 +1,8 @@
 import { PrometheusApiGeneralResponse } from '../types.js';
-import { FormatQuery, GetLabelValues, GetLabels, GetSeries, QueryExemplars, QueryInstant, QueryRange } from './types.js';
-declare class PrometheusQuery {
-    private baseUrl;
-    private prometheusQueryEndpoint;
-    constructor(baseUrl: string);
+import PrometheusServices from './prometheus-services.js';
+import { FormatQuery, GetLabelValues, GetLabels, GetSeries, PrometheusHeaders, QueryExemplars, QueryInstant, QueryRange } from './types.js';
+declare class PrometheusQuery extends PrometheusServices {
+    constructor(baseUrl: string, headers?: PrometheusHeaders);
     getQueryInstant(query: QueryInstant): Promise<{
         status: number;
         data: PrometheusApiGeneralResponse;

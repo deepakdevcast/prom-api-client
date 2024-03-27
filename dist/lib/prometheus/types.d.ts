@@ -89,4 +89,7 @@ export type PrometheusEndpointTemplates = {
 };
 export declare const PrometheusQueryEndpoint: PrometheusEndpointTemplates;
 export declare const PrometheusMetadataEndpoint: PrometheusEndpointTemplates;
+export type PrometheusHeaders = {
+    [key: string]: string;
+};
 export declare const PrometheusEndpoint: PrometheusEndpointTemplates;
