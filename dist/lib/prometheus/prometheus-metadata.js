@@ -29,5 +29,13 @@ class PrometheusMetadata extends PrometheusServices {
         });
         return { status: res.status, data: await res.json() };
     }
+    async getConfigFileData() {
+        const reqUrl = `${this.baseUrl}${this.serviceEndpoints.configFile.path}`;
+        const res = await fetch(reqUrl, {
+            method: this.serviceEndpoints.configFile.method,
+            headers: { ...this.headers },
+        });
+        return { status: res.status, data: (await res.json()).data };
+    }
 }
 export default PrometheusMetadata;

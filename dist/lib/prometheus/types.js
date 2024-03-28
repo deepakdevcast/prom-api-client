@@ -44,7 +44,11 @@ export const PrometheusMetadataEndpoint = {
     },
     metadata: {
         method: 'get',
-        path: '/api/v1/metadata',
+        path: '/api/v1/metadata'
+    },
+    configFile: {
+        method: 'get',
+        path: '/api/v1/status/config'
     }
 };
 export const PrometheusEndpoint = {
@@ -75,6 +79,10 @@ export const PrometheusEndpoint = {
             namespace: '',
             groupName: '',
         }
+    },
+    alertManagerDiscovery: {
+        method: 'get',
+        path: '/api/v1/alertmanagers'
     },
     setRuleGroupByNamespace: {
         method: 'post',

@@ -15,5 +15,9 @@ declare class PrometheusMetadata extends PrometheusServices {
         status: number;
         data: PrometheusApiGeneralResponse;
     }>;
+    getConfigFileData(): Promise<{
+        status: number;
+        data: PrometheusApiGeneralResponse;
+    }>;
 }
 export default PrometheusMetadata;
