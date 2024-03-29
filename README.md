@@ -1,7 +1,7 @@
 # Prom-API-Client
 A user-friendly package to use Prometheus HTTP-API in more easier way.
 
-<!-- If any features you want feel free to raise a issue in github -->
+### If any features you want feel free to raise a issue in github
 
 # Import Class and Instance
 ```
