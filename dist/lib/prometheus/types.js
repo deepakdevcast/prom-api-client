@@ -46,9 +46,36 @@ export const PrometheusMetadataEndpoint = {
         method: 'get',
         path: '/api/v1/metadata'
     },
+    alertManagerDiscovery: {
+        method: 'get',
+        path: '/api/v1/alertmanagers'
+    },
     configFile: {
         method: 'get',
         path: '/api/v1/status/config'
+    },
+    flagStatus: {
+        method: 'get',
+        path: '/api/v1/status/flags'
+    },
+    runTimeInfo: {
+        method: 'get',
+        path: '/api/v1/status/runtimeinfo'
+    },
+    buildInfo: {
+        method: 'get',
+        path: '/api/v1/status/buildinfo'
+    },
+    tsdb: {
+        method: 'get',
+        path: '/api/v1/status/tsdb',
+        params: {
+            limit: '',
+        }
+    },
+    walRePlay: {
+        method: 'get',
+        path: '/api/v1/status/walreplay'
     }
 };
 export const PrometheusEndpoint = {
@@ -79,10 +106,6 @@ export const PrometheusEndpoint = {
             namespace: '',
             groupName: '',
         }
-    },
-    alertManagerDiscovery: {
-        method: 'get',
-        path: '/api/v1/alertmanagers'
     },
     setRuleGroupByNamespace: {
         method: 'post',

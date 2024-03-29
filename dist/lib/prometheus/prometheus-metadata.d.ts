@@ -15,7 +15,31 @@ declare class PrometheusMetadata extends PrometheusServices {
         status: number;
         data: PrometheusApiGeneralResponse;
     }>;
-    getConfigFileData(): Promise<{
+    getAlertManagerList(): Promise<{
+        status: number;
+        data: PrometheusApiGeneralResponse;
+    }>;
+    getConfigFileYaml(): Promise<{
+        status: number;
+        data: PrometheusApiGeneralResponse;
+    }>;
+    getFlag(): Promise<{
+        status: number;
+        data: PrometheusApiGeneralResponse;
+    }>;
+    getRunTimeInfo(): Promise<{
+        status: number;
+        data: PrometheusApiGeneralResponse;
+    }>;
+    getBuildInfo(): Promise<{
+        status: number;
+        data: PrometheusApiGeneralResponse;
+    }>;
+    getTsdb(): Promise<{
+        status: number;
+        data: PrometheusApiGeneralResponse;
+    }>;
+    getWlRePlay(): Promise<{
         status: number;
         data: PrometheusApiGeneralResponse;
     }>;

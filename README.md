@@ -1,6 +1,8 @@
 # Prom-API-Client
 A user-friendly package to use Prometheus HTTP-API in more easier way.
 
+<!-- If any features you want feel free to raise a issue in github -->
+
 # Import Class and Instance
 ```
 import { PrometheusQuery, PrometheusRules, PrometheusMetadata } from 'prom-api-client';
@@ -38,20 +40,6 @@ const alertRules = await prometheusAlertInstance.getAlertRules({rule_name: 'test
 ## Get all active alerts
 ```
 const activeAlertData = await prometheusAlertInstance.getActiveAlerts();
-```
-
-## Set Alert Rules By Alert Group
-```
-const alertGroup = {
-  name: 'MyGroupName',
-  rules: [
-    {
-      alert: 'alert-1',
-    }
-  ]
-};
-const res = await prometheusAlertInstance.setAlertRuleGroup('test-alert', alertGroup);
-console.log(JSON.stringify(res));
 ```
 
 # Query
@@ -108,6 +96,12 @@ const dataLabelValues = await prometheusQueryInstance.getLabelValuesByLabelName(
 
 # Metadata and Targets
 
+## Get alertmanager service discovery
+```
+const alertmanagerData = await prometheusMetadataInstance.getAlertManagerList();
+console.log(JSON.stringify(alertmanagerData));
+```
+
 ## Get all target discovery
 ```
 const allTargetDiscovery = await prometheusMetadataInstance.getTargetDiscovery();
@@ -135,4 +129,34 @@ const targetMeta = await prometheusMetadataInstance.getTargetMetadata({
 const metaData = await prometheusMetadataInstance.getMetadata({
   metric: 'http_requests_total'
 });
+```
+
+## get flags
+```
+const promFlag = await prometheusMetadataInstance.getFlag();
+console.log(promFlag);
+```
+
+## get runtime info
+```
+const promRuntimeInfo = await prometheusMetadataInstance.getRunTimeInfo()
+console.log(promRuntimeInfo);
+```
+
+## get build info
+```
+const promBuildInfo = await prometheusMetadataInstance.getBuildInfo()
+console.log(promBuildInfo);
+```
+
+## get tsdb info
+```
+const promTsdb = await prometheusMetadataInstance.getTsdb()
+console.log(JSON.stringify(promTsdb));
+```
+
+## get walreplay
+```
+const walreplay = await prometheusMetadataInstance.getWlRePlay()
+console.log(JSON.stringify(walreplay));
 ```
